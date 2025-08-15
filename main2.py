@@ -9,13 +9,13 @@ time.sleep(2)
 import pyautogui
 import pygetwindow as gw
 
-KEEP_KEYWORDS = ["watch", "chatgpt", "record"]
+KEEP_KEYWORDS = ["watch", "chatgpt", "tk"]
 
 def get_chrome_windows():
     return [w for w in gw.getWindowsWithTitle('Chrome') if w.visible and w.title.strip() != ""]
 
 # 1. Mở Chrome với link và kích thước cố định
-old_url = "https://raw.githubusercontent.com/anisidina29/anisidina29-selenium_earnvids_docker/refs/heads/main/earnvids_link2.txt"
+old_url = "https://raw.githubusercontent.com/anisidina29/selenium_streamhg_docker_project/refs/heads/main/streamhg_link2.txt"
 response_old = requests.get(old_url)
 response_old.raise_for_status()
 links = response_old.text.strip().splitlines()
@@ -30,7 +30,7 @@ subprocess.Popen(["start", "chrome", "--new-window", url, "--window-size=1280,72
 time.sleep(6)
 
 # 3. Click nút Play hoặc giữa màn hình
-for i in range(25):
+for i in range(7):
     print(f"\nLap lan {i+1}/10")
     try:
         location = pyautogui.locateOnScreen("play.png", confidence=0.8)
@@ -68,7 +68,7 @@ for i in range(25):
 
 print("\nBat dau mo phong nguoi dung trong 250 giay...")
 start_time = time.time()
-duration = 250
+duration = 200
 
 while time.time() - start_time < duration:
     screen_width, screen_height = pyautogui.size()
@@ -95,5 +95,6 @@ for w in tabs:
     time.sleep(0.5)
     pyautogui.hotkey('ctrl', 'w')
     time.sleep(0.5)
+
 
 print("Hoan tat tat ca.")
